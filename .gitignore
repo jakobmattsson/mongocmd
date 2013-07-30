@@ -10,5 +10,12 @@ lib-cov
 pids
 logs
 results
+lib
 
 npm-debug.log
+
+!.npmignore
+!.gitignore
+!.bowerrc
+!.travis.yml
+

@@ -1,0 +1,30 @@
+{
+  "name": "mongocmd",
+  "description": "Running mongo command line tools from node",
+  "version": "0.1.0",
+  "author": "Jakob Mattsson <jakob@leanmachine.se> (http://jakobmattsson.se)",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jakobmattsson/mongocmd"
+  },
+  "main": "./lib/mongocmd.js",
+  "engines": {
+    "node": ">= 0.8 < 0.12"
+  },
+  "devDependencies": {
+    "coffee-script": ">= 1.4.0 < 2",
+    "jscov": ">= 0.5.4 < 0.6",
+    "mocha-term-cov-reporter": ">= 0.1.0 < 0.2",
+    "chai": ">= 1.5.0 < 2",
+    "mocha": ">= 1.7.4 < 2",
+    "sinon": ">= 1.6.0 < 2",
+    "sinon-chai": ">= 2.3.1 < 3"
+  },
+  "scripts": {
+    "clean": "rm -rf .cov *.log",
+    "coverage": "jscov --expand src .cov && JSCOV=.cov mocha --timeout 10000  --compilers coffee:coffee-script --reporter mocha-term-cov-reporter tests/*.coffee || exit 0",
+    "pretest": "coffee -co lib src",
+    "prepublish": "coffee -co lib src",
+    "test": "mocha -b --timeout 10000 --compilers coffee:coffee-script tests/*.coffee"
+  }
+}
