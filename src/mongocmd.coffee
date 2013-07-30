@@ -5,10 +5,17 @@ exports.dump = ({host, db, username, password, outdir, verbose}, callback) ->
   args = [
     '--host', host
     '--db', db
-    '--username', username
-    '--password', password
     '--out', outdir
   ]
+
+  if username
+    args.push('--username')
+    args.push(username)
+
+  if password
+    args.push('--password')
+    args.push(password)
+
   dump = childProcess.spawn('mongodump', args)
 
   dump.stdout.on 'data', (data) ->
